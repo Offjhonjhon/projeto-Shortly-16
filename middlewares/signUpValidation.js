@@ -2,11 +2,9 @@ import signUpSchema from "../schemas/signUpSchema.js";
 
 export function validateSignUp(req, res, next) {
   const signUp = req.body;
-  const validation = signUpSchema.validate(signUp);
+  const { error } = signUpSchema.validate(signUp);
 
-  if (validation.error) {
-    return res.sendStatus(400); // bad request
-  }
+  if (error) return res.status(422).send(error.details.map((d) => d.message));
 
   next();
 }
