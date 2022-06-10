@@ -14,6 +14,5 @@ app.use(router);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log(chalk.green(`mode: ${process.env.MODE || "not defined -> DEV"}`));
     console.log(`server is up and running onport ${port}`);
 })
